@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require("sequelize");
-const config = require('../../database/config.json')
+require('dotenv').config();
 
-const connect = new Sequelize(config.database, config.user, config.password, { host: config.host, dialect: 'mysql' })
+const connect = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, { host: process.env.DB_HOST, dialect: 'mysql' })
 
 const db = {};
 db.Sequelize = Sequelize;
@@ -13,7 +13,7 @@ db.Reservation = require('./reservations.js')(connect, DataTypes)
 db.ImgHouse = require('./imgHouses.js')(connect, DataTypes)
 
 //connect.sync({ alter: true })
-//connect.sync({ force: true })
+// connect.sync({ force: true })
 connect.authenticate()
   .then(() => console.log("Sequelize database is connected successfully ;)"))
   .catch((error) => console.log(error))
@@ -30,8 +30,8 @@ db.Reservation.belongsTo(db.House, { foreignKey: 'House_id', as: 'Houses' })
 db.House.hasMany(db.ImgHouse, { foreignKey: 'House_id', as: 'Images' });
 db.ImgHouse.belongsTo(db.House, { foreignKey: 'House_id', as: 'Houses' })
 
-// //relation manyTomany between table user && house
+//relation manyTomany between table user && house
 // db.User.belongsToMany(db.House, { through: 'favoris' }); // 'favoris' is the junction table
-// //db.House.belongsToMany(db.User, { through: 'favoris' });
+//db.House.belongsToMany(db.User, { through: 'favoris' });
 
 module.exports = db
