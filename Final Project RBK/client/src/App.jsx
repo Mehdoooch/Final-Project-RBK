@@ -8,7 +8,7 @@ import Allhouses from "./components/Admin/Allhouses";
 import Allreservations from "./components/Admin/Allreservations ";
 import Allusers from "./components/Admin/Allusers ";
 import Updatehouse from "./components/Admin/Updatehouse";
-
+import DetailsPage from './components/DetailsPage'
 
 function App() {
 
@@ -20,12 +20,13 @@ function App() {
         <Dashboard />
         <Routes>
 
-          <Route path="/admin/home" element={<Homeadmin />} />
+          <Route path="/admin/home" element={<DetailsPage />} />
           <Route path="/admin/newhouse" element={<AddHouse />} />
           <Route path="/admin/houses" element={<Allhouses />} />
           <Route path="/admin/reservations" element={<Allreservations />} />
           <Route path="/admin/users" element={<Allusers />} />
           <Route path="/admin/houses/update/:id" element={<Updatehouse />} />
+          <Route path='/' element={<DetailsPage />} />
 
         </Routes>
       </BrowserRouter>
