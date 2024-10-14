@@ -1,10 +1,16 @@
 const db = require("../orm/Models/index.js")
 
-
 //getting all the Houses
 const getAllHouses = async (req, res) => {
   try {
-    const result = await db.House.findAll({})
+    const result = await db.House.findAll({
+      include: [{
+        model: db.ImgHouse,
+        attributes:['id','url'],
+        as: 'images',
+        required: false
+      }]
+    })
     res.status(200).send(result);
   }
   catch (error) {
@@ -16,7 +22,16 @@ const getAllHouses = async (req, res) => {
 const getOneHouse = async (req, res) => {
   try {
     const id = req.params.id;
-    const result = await db.House.findOne({ where: { id } })
+    const result = await db.House.findOne({ 
+      where: { id },
+      include: [{
+        model: db.ImgHouse,
+        attributes:['id','url'],
+        as: 'images',
+        required: false
+      }]
+
+     })
     if (result.length === 0) {
       res.status(404).send({ "Message": `House with id ${id} not found !` })
     } else res.status(200).send(result)
@@ -29,15 +44,39 @@ const getOneHouse = async (req, res) => {
 
 //add a new House in database
 const addHouse = async (req, res) => {
+  const { title, description, price,region,localisation,surface,room,imghouses } = req.body;
+
   try {
-    const body = req.body;
-    const result = await db.House.create(body)
-    res.status(201).send({ House: result, message: 'House created successfully!' })
+   
+    const newHouse = await db.House.create({
+      title,
+      description,
+      price,
+      region,
+      localisation,
+      surface,
+      room,
+    });
+   
+    const imageRecords = imghouses.map(url => ({
+      url,
+      houseId: newHouse.id,
+    }));
+
+    await db.ImgHouse.bulkCreate(imageRecords);
+
+    return res.status(201).json({
+      message: 'House added successfully.',
+      House: newHouse,
+      images: imageRecords,
+    });
+  } catch (error) {
+    console.error('Error adding House:', error);
+    return res.status(500).json({ message: 'Internal server error.' });
   }
-  catch (error) {
-    res.status(500).send(error)
-  }
-}
+};
+
+
 
 // delete a House from database by his id
 const deleteHouse = async (req, res) => {

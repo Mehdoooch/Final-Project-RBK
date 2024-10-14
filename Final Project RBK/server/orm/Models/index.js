@@ -11,9 +11,15 @@ db.House = require('./houses.js')(connect, DataTypes)
 db.User = require('./users.js')(connect, DataTypes)
 db.Reservation = require('./reservations.js')(connect, DataTypes)
 db.ImgHouse = require('./imgHouses.js')(connect, DataTypes)
+// Setup associations
+Object.keys(db).forEach(modelName => {
+  if (db[modelName].associate) {
+      db[modelName].associate(db);
+  }
+});
 
 //connect.sync({ alter: true })
-// connect.sync({ force: true })
+ //connect.sync({ force: true })
 connect.authenticate()
   .then(() => console.log("Sequelize database is connected successfully ;)"))
   .catch((error) => console.log(error))
@@ -26,12 +32,12 @@ db.Reservation.belongsTo(db.User, { foreignKey: 'user_id', as: 'Users' })
 db.House.hasMany(db.Reservation, { foreignKey: 'House_id', as: 'Reservations' });
 db.Reservation.belongsTo(db.House, { foreignKey: 'House_id', as: 'Houses' })
 
-//relation between table house && imgHouse
+/*//relation between table house && imgHouse
 db.House.hasMany(db.ImgHouse, { foreignKey: 'House_id', as: 'Images' });
 db.ImgHouse.belongsTo(db.House, { foreignKey: 'House_id', as: 'Houses' })
 
 //relation manyTomany between table user && house
 // db.User.belongsToMany(db.House, { through: 'favoris' }); // 'favoris' is the junction table
 //db.House.belongsToMany(db.User, { through: 'favoris' });
-
+*/
 module.exports = db
