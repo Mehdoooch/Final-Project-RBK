@@ -8,7 +8,7 @@ import '../App.css'
 
 export default function DetailsPage() {
 
-    const index = 5;
+    const index = 1;
     const dummyHouse = 'https://i.pinimg.com/enabled_hi/564x/2b/63/d4/2b63d4b56e89911b462dfc2b44e3d65f.jpg';
 
     const [data, setData] = useState([]);
@@ -19,6 +19,8 @@ export default function DetailsPage() {
             try {
                 const res = await axios.get('http://localhost:8080/house/getAll');
                 setData(res.data);
+                console.log(data);
+
                 const imgRes = await axios.get('http://localhost:8080/imgHouse/getAll');
                 setImages(imgRes.data);
             } catch (err) {
@@ -28,8 +30,8 @@ export default function DetailsPage() {
         fetchData();
     }, []);
 
-    const getHouseImages = (houseId) => {
-        return images.filter((img) => img.House_id === houseId);
+    const getHouseImages = (house) => {
+        return images.filter((img) => img.houseId === house);
     };
 
     if (data.length === 0 || index >= data.length) {
@@ -112,7 +114,7 @@ export default function DetailsPage() {
                     </div>
                 </div>
             </div>
-            <BasicFooter  />
+            <BasicFooter />
         </div>
     );
 }
