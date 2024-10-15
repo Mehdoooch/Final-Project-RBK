@@ -12,7 +12,7 @@ db.User = require('./users.js')(connect, DataTypes)
 db.Reservation = require('./reservations.js')(connect, DataTypes)
 db.ImgHouse = require('./imgHouses.js')(connect, DataTypes)
 
-//connect.sync({ alter: true })
+// connect.sync({ alter: true })
 // connect.sync({ force: true })
 connect.authenticate()
   .then(() => console.log("Sequelize database is connected successfully ;)"))
