@@ -1,5 +1,6 @@
 import React from 'react';
 import Dashboard from "./Dashboard"
+import "./Admin.css"
 
 function Allusers (props) {
     return (

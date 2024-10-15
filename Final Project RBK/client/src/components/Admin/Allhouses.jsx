@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import ShowImage from './ShowImage';
 //import Dashboard from "./Dashboard.jsx"
+import "./Admin.css"
 
 // import from material UI
 import Box from '@mui/material/Box';

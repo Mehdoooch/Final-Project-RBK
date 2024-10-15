@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Dialog, DialogContent, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import "./Admin.css"
 
 // component for showing images in the list fo houses
 const ShowImage = ({ params }) => {
