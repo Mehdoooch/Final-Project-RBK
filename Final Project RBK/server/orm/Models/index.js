@@ -20,6 +20,7 @@ Object.keys(db).forEach(modelName => {
 
 //connect.sync({ alter: true })
  //connect.sync({ force: true })
+
 connect.authenticate()
   .then(() => console.log("Sequelize database is connected successfully ;)"))
   .catch((error) => console.log(error))
