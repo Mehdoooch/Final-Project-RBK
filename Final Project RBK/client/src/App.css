@@ -96,7 +96,7 @@ img {
   height: 100%;
   cursor: pointer;
 }
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 

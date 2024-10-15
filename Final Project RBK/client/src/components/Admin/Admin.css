@@ -1,4 +1,4 @@
-.container-house {
+/* .container-house {
     max-width: 600px;
     margin: 50px auto;
     padding: 20px;
@@ -19,7 +19,7 @@
 .button-container {
     display: flex;
     justify-content: flex-end;
-    /* Aligns the button to the left */
+    
 }
 
 .label-house {
@@ -63,4 +63,4 @@
 }
 h1 {
  text-align: center;
-}
+} */
