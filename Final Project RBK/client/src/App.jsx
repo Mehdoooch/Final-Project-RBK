@@ -21,7 +21,7 @@ function App() {
       <BrowserRouter>
         {/* <Dashboard /> */}
         <Routes>
-         <Route path="/" element={<Home/>} /> 
+          <Route path="/" element={<Home/>} /> 
           <Route path="/admin/home" element={<DetailsPage />} />
           <Route path="/admin/newhouse" element={<AddHouse />} />
           <Route path="/admin/houses" element={<Allhouses />} />
