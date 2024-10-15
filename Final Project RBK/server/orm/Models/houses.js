@@ -33,10 +33,17 @@ module.exports = (connect, DataTypes) => {
 
     },
         {
+            tableName:'houses',
             timestamps: false,
         }
-    )
-
+    );
+    House.associate = (models) => {
+        House.hasMany(models.ImgHouse, {
+          foreignKey: 'houseId',
+          as: 'images',
+          onDelete: 'CASCADE',
+        });
+      };
 
     return House
 }

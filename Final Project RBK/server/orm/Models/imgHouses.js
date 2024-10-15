@@ -6,10 +6,27 @@ module.exports = (connect, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-    },
-        {
-            timestamps: false,
-        }
-    )
-    return ImgHouse
+        houseId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'houses',
+                key: 'id',
+            },
+            onDelete: 'CASCADE',
+        },
+    }, {
+        tableName: 'imghouses',
+        timestamps: false,
+    });
+
+    ImgHouse.associate = (models) => {
+        ImgHouse.belongsTo(models.House, {
+            foreignKey: 'houseId',
+            as: 'house',
+        });
+    };
+
+
+return ImgHouse
 }
