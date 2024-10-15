@@ -10,6 +10,15 @@ module.exports = (connect, DataTypes) => {
             type: DataTypes.DATEONLY,
             allowNull: false
         },
+        houseId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'houses',
+                key: 'id',
+            },
+            onDelete: 'CASCADE',
+        },
         // state: {
         //     type: DataTypes.STRING,
         //     allowNull: false
