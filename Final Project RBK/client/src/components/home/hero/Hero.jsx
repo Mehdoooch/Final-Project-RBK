@@ -1,10 +1,25 @@
-import React from "react"
+import React, { useState } from 'react';
 import Heading from "../../common/Heading"
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 import "./hero.css"
-
+import axios from "axios";
 const Hero = () => {
+  const [data, setData] = useState([]);
+  const [searchHouse, setSearchHouse] = useState('')
+  
+
+  const filtered = data.filter((elem) => {
+
+    const titleHouse = elem.title.toLowerCase();
+    const searchText = searchHouse.toLowerCase();
+    // Check if the (title and description) match the search query
+    return (
+        titleHouse.includes(searchText) ||
+        elem.description?.toLowerCase().includes(searchText) ||
+        elem.region?.toLowerCase().includes(searchText)
+    );
+})
   return (
     <>
       <section className='hero'>

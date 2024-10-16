@@ -24,7 +24,7 @@ INSERT INTO Users (username, email, password, image) VALUES
 
 
 
-INSERT INTO Reservations (startDate, endDate, user_id, houseId) VALUES
+INSERT INTO Reservations (startDate, endDate, userId, houseId) VALUES
 ('2024-01-01', '2024-01-10', 1, 1),
 ('2024-02-15', '2024-02-20', 2, 2),
 ('2024-03-05', '2024-03-12', 3, 3),

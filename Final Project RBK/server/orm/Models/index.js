@@ -19,19 +19,19 @@ Object.keys(db).forEach(modelName => {
 });
 
 //connect.sync({ alter: true })
-//  connect.sync({ force: true })
+// connect.sync({ force: true })
 
 connect.authenticate()
   .then(() => console.log("Sequelize database is connected successfully ;)"))
   .catch((error) => console.log(error))
 
 //relation between table user && reservation
-db.User.hasMany(db.Reservation, { foreignKey: 'user_id', as: 'Reservations' });
-db.Reservation.belongsTo(db.User, { foreignKey: 'user_id', as: 'Users' })
+db.User.hasMany(db.Reservation, { foreignKey: 'userId', as: 'Reservations' });
+db.Reservation.belongsTo(db.User, { foreignKey: 'userId', as: 'Users' })
 
 //relation between table house && reservation
-db.House.hasMany(db.Reservation, { foreignKey: 'House_id', as: 'Reservations' });
-db.Reservation.belongsTo(db.House, { foreignKey: 'House_id', as: 'Houses' })
+db.House.hasMany(db.Reservation, { foreignKey: 'houseId', as: 'Reservations' });
+db.Reservation.belongsTo(db.House, { foreignKey: 'houseId', as: 'Houses' })
 
 /*//relation between table house && imgHouse
 db.House.hasMany(db.ImgHouse, { foreignKey: 'House_id', as: 'Images' });

@@ -30,7 +30,10 @@ module.exports = (connect, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-
+        // cover: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false
+        // },
     },
         {
             tableName:'houses',
