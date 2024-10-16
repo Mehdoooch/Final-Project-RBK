@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import "./header.css"
-import { nav } from "../../data/Data"
+import { nav } from "../data/Data"
 import { Link } from "react-router-dom"
 
 const Header = () => {

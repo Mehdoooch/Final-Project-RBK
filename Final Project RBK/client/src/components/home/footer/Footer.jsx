@@ -1,5 +1,5 @@
 import React from "react"
-import { footer } from "../../data/Data"
+import { footer } from "../data/Data"
 import "./footer.css"
 
 const Footer = () => {
@@ -45,7 +45,7 @@ const Footer = () => {
         </div>
       </footer>
       <div className='legal'>
-        <span>© 2021 RentUP. Designd By GorkCoder.</span>
+        <span>© 2024 DarDarak. Designd By M.A.S.K.</span>
       </div>
     </>
   )

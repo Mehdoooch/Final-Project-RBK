@@ -1,19 +1,29 @@
 import React from "react"
-import Heading from "../../common/Heading"
 import "./Featured.css"
-import FeaturedCard from "./FeaturedCard"
+import { featured } from "../data/Data"
 
-const Featured = () => {
+const Featuredd = () => {
   return (
     <>
       <section className='featured background'>
         <div className='container'>
-          <Heading title='Featured Property Types' subtitle='Find All Type of Property.' />
-          <FeaturedCard />
+          <div className='heading'>
+          <h1>Featured Property Types</h1>
+          <p>Find All Type of Property.</p>
+          </div>
+          <div className='content grid5 mtop'>
+        {featured.map((items, index) => (
+          <div className='box' key={index}>
+            <img src={items.cover} alt='' />
+            <h4>{items.name}</h4>
+            <label>{items.total}</label>
+          </div>
+        ))}
+      </div>
         </div>
       </section>
     </>
   )
 }
 
-export default Featured
+export default Featuredd
