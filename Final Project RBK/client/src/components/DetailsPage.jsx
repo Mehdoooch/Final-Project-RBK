@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { MapPin, Phone, Calendar, Star, Users, Home, DollarSign } from 'lucide-react';
-import BasicNavbar from './NavBar'
+// import BasicNavbar from './NavBar'
 import BasicFooter from './Footer'
-import '../App.css'
+import './Details.css'
 
 
 export default function DetailsPage() {
@@ -43,7 +43,6 @@ export default function DetailsPage() {
 
     return (
         <div>
-            <BasicNavbar />
             <div className="container mx-auto px-6 py-10 mt-16 max-w-6xl bg-gray-50">
                 <h1 className="text-4xl font-extrabold mb-6 text-gray-900">{house.title}</h1>
 

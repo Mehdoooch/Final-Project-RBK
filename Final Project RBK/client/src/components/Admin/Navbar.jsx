@@ -99,7 +99,7 @@ function Navbar() {
     };
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
+            <AppBar position="static" sx={ {backgroundColor: '#27ae60'}}>
                 <Toolbar>
                     <IconButton
                         size="large"
@@ -121,17 +121,7 @@ function Navbar() {
                             DarDarek
                         </Link>
                     </Typography>
-                    {/* <Search>
-                        <SearchIconWrapper>
-                            <SearchIcon />
-                        </SearchIconWrapper>
-                        <StyledInputBase
-                            placeholder="Search…"
-                            value={searchhouse}
-                            onChange={(e) => setSearchhouse(e.target.value)}
-                            inputProps={{ 'aria-label': 'search' }}
-                        />
-                    </Search> */}
+                    
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

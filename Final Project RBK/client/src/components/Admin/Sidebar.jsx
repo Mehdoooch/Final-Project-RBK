@@ -25,7 +25,7 @@ function Sidebar({state,setState,toggleDrawer}) {
           onKeyDown={toggleDrawer(anchor, false)}
         >
           <List>
-            {['Home', 'NewHouse', 'Houses', 'Reservations','Users'].map((text, index) => (
+            {['Home', 'NewHouse', 'Houses', 'Reservations','Users','Contact'].map((text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton href={`/admin/${text.toLowerCase()}`}>
                   <ListItemIcon>
@@ -40,7 +40,7 @@ function Sidebar({state,setState,toggleDrawer}) {
           <List>
             {['All mail', 'Trash', 'Spam'].map((text, index) => (
               <ListItem key={text} disablePadding>
-                <ListItemButton>
+                <ListItemButton href={`https://mail.google.com/mail/u/0/?pli=1#inbox`} target="_blank" rel="noopener noreferrer">
                   <ListItemIcon>
                     {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                   </ListItemIcon>

@@ -9,6 +9,7 @@ import "./Admin.css"
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import EditIcon from '@mui/icons-material/Edit';
+import PreviewIcon from '@mui/icons-material/Preview';
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import { DataGrid, GridActionsCellItem } from '@mui/x-data-grid';
@@ -47,6 +48,11 @@ function Allhouses() {
                 .catch(err => console.log(err));
         }
     }
+ // function to navigate to the DetailsPage component
+    const handlePreview=(row)=>{
+        setEditrow(row)
+        navigate(`/detailsPage/${row.id}`, { state: { detailsrow: row } })
+    }
 
     // function to navigate to the update component
     const handleEditClick = (row) => {
@@ -55,39 +61,49 @@ function Allhouses() {
     }
 
     const columns = [
-        { field: 'id', headerName: 'ID', width: 3 },
-        { field: 'title', headerName: 'Title', width: 120 },
-        { field: 'description', headerName: 'Description', width: 300 },
-        { field: 'price', headerName: 'Price', width: 80 },
-        { field: 'region', headerName: 'Region', width: 100 },
-        { field: 'localisation', headerName: 'Localisation', width: 150 },
-        { field: 'surface', headerName: 'Surface', width: 80 },
-        { field: 'room', headerName: 'Room', width: 60 },
-        { field: 'images', headerName: 'Images', width: 200, renderCell: (params) => <ShowImage params={params} /> },
+        { field: 'id', headerName: 'ID',headerAlign: 'center', headerClassName: 'custom-header', width: 3 },
+        { field: 'title', headerName: 'Title',headerAlign: 'center', headerClassName: 'custom-header', width: 120 },
+        { field: 'description', headerName: 'Description',headerAlign: 'center', headerClassName: 'custom-header', width: 300 },
+        { field: 'price', headerName: 'Price',headerAlign: 'center', headerClassName: 'custom-header', width: 80 },
+        { field: 'region', headerName: 'Region',headerAlign: 'center', headerClassName: 'custom-header', width: 100 },
+        { field: 'localisation', headerName: 'Localisation',headerAlign: 'center', headerClassName: 'custom-header', width: 150 },
+        { field: 'surface', headerName: 'Surface',headerAlign: 'center', headerClassName: 'custom-header', width: 80 },
+        { field: 'room', headerName: 'Room',headerAlign: 'center', headerClassName: 'custom-header', width: 60 },
+        { field: 'images', headerName: 'Images',headerAlign: 'center', headerClassName: 'custom-header', width: 200, renderCell: (params) => <ShowImage params={params} /> },
         {
-            field: 'actions', type: 'actions', headerName: 'Actions', width: 100, cellClassName: 'actions',
+            field: 'actions', type: 'actions', headerName: 'Actions',headerAlign: 'center', headerClassName: 'custom-header', width: 120, cellClassName: 'actions',
             renderCell: (params) => {
                 return [
                     <GridActionsCellItem
                         icon={<EditIcon />}
                         label="Edit"
+                        title="Edit" 
                         className="textPrimary"
                         onClick={() => handleEditClick(params.row)}
                         color="inherit"
                     />,
                     <GridActionsCellItem
-                        icon={<CalendarMonthIcon />}
-                        label="Show Reservations"
+                        icon={<CalendarMonthIcon style={{ color: 'blue' }}  />}
+                        label="Reservations"
+                        title="Reservations" 
                         className="textPrimary"
                         // onClick={() => handleShowReservations(params.row)}
                         color="inherit"
                     />,
                     <GridActionsCellItem
-                        icon={<DeleteIcon />}
+                        icon={<DeleteIcon style={{ color: '#ec1212' }} />}
                         label="Delete"
+                        title="Delete" 
                         onClick={() => handleDelete(params.row)}
                         color="inherit"
                     />,
+                    <GridActionsCellItem
+                    icon={<PreviewIcon style={{ color: 'green' }}  />}
+                    label="Preview"
+                    title="Preview" 
+                    onClick={() => handlePreview(params.row)}
+                    color="inherit"
+                />,
                 ];
             },
         },
@@ -108,10 +124,10 @@ function Allhouses() {
 
     return (
         <div className='house-list'>
-            <h1>All Houses </h1>
+            <h1 className='All-Houses'>Houses </h1>
             <Box sx={{ height: '70%', width: '100%' }}>
                 <div className='container-grid'>
-                    <TextField sx={{ '& .MuiInputBase-root': { height: '50px', padding: '10px 8px' } }} fullWidth label="Search house..." type="search" value={searchhouse} onChange={(e) => setSearchhouse(e.target.value)}
+                    <TextField sx={{ '& .MuiInputBase-root': { height: '50px', padding: '10px 8px',borderColor: '#06ee3c' } }} fullWidth label="Search house..." type="search" value={searchhouse} onChange={(e) => setSearchhouse(e.target.value)}
                     />
                     <DataGrid
                         rows={filtered}
@@ -128,6 +144,15 @@ function Allhouses() {
                         }}
                         pageSizeOptions={[10]}
                         RowSelectionOnClick
+                        sx={{
+                            '& .MuiDataGrid-columnHeaders': {
+                              backgroundColor: '#1976d2',  
+                              color: '#06ee3c',              
+                              fontSize: '16px',            
+                              fontWeight: 'bold',          
+                              textAlign:'center',
+                            },
+                          }}
                     />
                 </div>
             </Box>

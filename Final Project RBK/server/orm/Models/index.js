@@ -26,8 +26,8 @@ connect.authenticate()
   .catch((error) => console.log(error))
 
 //relation between table user && reservation
-db.User.hasMany(db.Reservation, { foreignKey: 'user_id', as: 'Reservations' });
-db.Reservation.belongsTo(db.User, { foreignKey: 'user_id', as: 'Users' })
+db.User.hasMany(db.Reservation, { foreignKey: 'userId', as: 'Reservations' });
+db.Reservation.belongsTo(db.User, { foreignKey: 'userId', as: 'Users' })
 
 //relation between table house && reservation
 db.House.hasMany(db.Reservation, { foreignKey: 'houseId', as: 'Reservations' });

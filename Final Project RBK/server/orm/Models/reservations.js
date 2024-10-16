@@ -10,10 +10,6 @@ module.exports = (connect, DataTypes) => {
             type: DataTypes.DATEONLY,
             allowNull: false
         },
-        // state: {
-        //     type: DataTypes.STRING,
-        //     allowNull: false
-        // },
         houseId: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -23,6 +19,10 @@ module.exports = (connect, DataTypes) => {
             },
             onDelete: 'CASCADE',
         },
+        // state: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false
+        // },
         userId: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -32,7 +32,6 @@ module.exports = (connect, DataTypes) => {
             },
             onDelete: 'CASCADE',
         },
-
 
     },
         {
