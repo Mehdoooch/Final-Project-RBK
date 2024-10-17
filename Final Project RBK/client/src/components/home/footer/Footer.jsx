@@ -1,8 +1,22 @@
 import React from "react"
-import { footer } from "../data/Data"
+
 import "./footer.css"
 
 const Footer = () => {
+  const footer = [
+    {
+      title: "LAYOUTS",
+      text: [{ list: "Home Page" }, { list: "About Page" }, { list: "Service Page" }, { list: "Property Page" }, { list: "Contact Page" }, { list: "Single Blog" }],
+    },
+    {
+      title: "ALL SECTIONS",
+      text: [{ list: "Headers" }, { list: "Features" }, { list: "Attractive" }, { list: "Testimonials" }, { list: "Videos" }, { list: "Footers" }],
+    },
+    {
+      title: "COMPANY",
+      text: [{ list: "About" }, { list: "Blog" }, { list: "Pricing" }, { list: "Affiliate" }, { list: "Login" }, { list: "Changelog" }],
+    },
+  ]
   return (
     <>
       <section className='footerContact'>
@@ -32,12 +46,12 @@ const Footer = () => {
             </div>
           </div>
 
-          {footer.map((val) => (
-            <div className='box'>
+          {footer.map((val,i) => (
+            <div className='box' key={i}>
               <h3>{val.title}</h3>
               <ul>
-                {val.text.map((items) => (
-                  <li> {items.list} </li>
+                {val.text.map((items,j) => (
+                  <li key={j}> {items.list} </li>
                 ))}
               </ul>
             </div>

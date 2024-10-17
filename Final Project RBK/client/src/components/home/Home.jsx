@@ -16,8 +16,8 @@ const Home = () => {
     <>
         <Header/>
         <Hero onSearch={handleSearch}/>
-        <Featured />
         <Recent searchQuery={searchQuery}/>
+        <Featured />
         <Footer />
     </>
   )

@@ -1,11 +1,35 @@
 import React, { useState } from "react"
 import "./header.css"
-import { nav } from "../data/Data"
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 
 const Header = () => {
   const [navList, setNavList] = useState(false)
-
+  const nav = [
+    {
+      text: "home",
+      path: "/",
+    },
+    {
+      text: "about",
+      path: "/about",
+    },
+    {
+      text: "services",
+      path: "/services",
+    },
+    // {
+    //   text: "blog",
+    //   path: "/blog",
+    // },
+    // {
+    //   text: "pricing",
+    //   path: "/pricing",
+    // },
+    {
+      text: "contact",
+      path: "/contact",
+    },
+  ]
   return (
     <>
       <header>
@@ -17,7 +41,7 @@ const Header = () => {
             <ul className={navList ? "small" : "flex"}>
               {nav.map((list, index) => (
                 <li key={index}>
-                  <Link to={list.path}>{list.text}</Link>
+                  <NavLink to={list.path}>{list.text}</NavLink>
                 </li>
               ))}
             </ul>

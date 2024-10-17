@@ -29,6 +29,7 @@ const Hero = ({ onSearch }) => {
                 onChange={handleSearchChange}  // Déclenche la fonction à chaque frappe de touche
               />
             </div>
+            <i className='fa fa-search'></i>
           </form>
         </div>
       </section>

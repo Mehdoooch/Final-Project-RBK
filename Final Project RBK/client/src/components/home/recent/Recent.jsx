@@ -37,7 +37,7 @@ import axios from "axios"
               <div className='box shadow'  key={elem.id}>
                
                 <div className='img'>
-                <p   onClick={()=> {  navigate(`/detailsPage${elem.id}` , {state : elem}) }}>
+                <p   onClick={()=> {  navigate(`/detailsPage/${elem.id}` , {state : elem}) }}>
                   <img src={elem.images[0].url} alt={elem.title} /></p>
                 </div>
                 <div className='text'>
@@ -56,7 +56,7 @@ import axios from "axios"
                 </div>
                 <div className='button flex'>
                   <div>
-                    <button className='btn2'>{elem.price}</button> <label htmlFor=''>/sqft</label>
+                    <button className='btn2'>{elem.price}</button> <label htmlFor=''></label>
                   </div>
                   <span>{elem.region}</span>
                 </div>

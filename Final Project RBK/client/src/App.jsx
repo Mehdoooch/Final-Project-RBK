@@ -9,7 +9,9 @@ import Allusers from "./components/Admin/Allusers ";
 import Updatehouse from "./components/Admin/Updatehouse";
 import DetailsPage from './components/DetailsPage'
 import Home from './components/home/Home';
+import Contact from './components/home/contact/Contact';
 import "./App.css";
+import About from './components/home/about/About';
 
 
 
@@ -22,6 +24,8 @@ function App() {
         {/* <Dashboard /> */}
         <Routes>
           <Route path="/" element={<Home/>} /> 
+          <Route path="/contact" element={<Contact/>} /> 
+          <Route path="/about" element={<About/>} />
           <Route path="/admin/home" element={<DetailsPage />} />
           <Route path="/admin/newhouse" element={<AddHouse />} />
           <Route path="/admin/houses" element={<Allhouses />} />

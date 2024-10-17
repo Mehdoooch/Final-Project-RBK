@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { MapPin, Phone, Calendar, Star, Users, Home, DollarSign } from 'lucide-react';
-// import BasicNavbar from './NavBar'
+
 import BasicFooter from './Footer'
 import '../App.css'
 
