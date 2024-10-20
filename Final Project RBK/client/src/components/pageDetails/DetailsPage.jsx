@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { MapPin, Phone, Calendar, Star, Users, Home, DollarSign } from 'lucide-react';
-// import BasicNavbar from './NavBar'
 import BasicFooter from './Footer'
-import '../App.css'
+import ErrorHouse from './ErrorHouse'
+import Map_page from './Map'
+import '../../App.css'
 
 
 export default function DetailsPage() {
 
-    const index = 1;
     const dummyHouse = 'https://i.pinimg.com/enabled_hi/564x/2b/63/d4/2b63d4b56e89911b462dfc2b44e3d65f.jpg';
 
     const [data, setData] = useState([]);
     const [images, setImages] = useState([]);
+    const [index, setIndex] = useState(2)
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const res = await axios.get('http://localhost:8080/house/getAll');
                 setData(res.data);
-                console.log(data);
 
                 const imgRes = await axios.get('http://localhost:8080/imgHouse/getAll');
                 setImages(imgRes.data);
@@ -34,8 +34,8 @@ export default function DetailsPage() {
         return images.filter((img) => img.houseId === house);
     };
 
-    if (data.length === 0 || index >= data.length) {
-        return <p>Loading house details...</p>;
+    if (data.length === 0 ) {
+        return <ErrorHouse />
     }
 
     const house = data[index];
@@ -99,17 +99,17 @@ export default function DetailsPage() {
                             </div>
                             <div className="flex items-center text-gray-500 bg-gray-100 p-3 rounded-lg shadow-inner">
                                 <MapPin size={24} className="mr-2 text-blue-500" />
-                                <span className="text-sm">{house.region + '_' + house.localisation}</span>
+                                <span className="text-sm">{house.region}</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                {/* Map Section */}
+                
                 <div className="mt-12">
                     <h2 className="text-2xl font-semibold mb-4 text-gray-800">Location</h2>
                     <div className="bg-gray-200 h-96 rounded-lg shadow-md flex items-center justify-center hover:shadow-lg transition duration-300">
-                        <span className="text-gray-500 text-lg">Map placeholder</span>
+                    <Map_page house={house}  items={data} img={images} />
                     </div>
                 </div>
             </div>
