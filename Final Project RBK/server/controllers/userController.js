@@ -1,54 +1,51 @@
-const db = require("../orm/Models/index.js")
-
+const db = require("../orm/Models/index.js");
 
 //getting all the users
 const getAllUsers = async (req, res) => {
   try {
-    const result = await db.User.findAll({})
+    const result = await db.User.findAll({});
     res.status(200).send(result);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error);
   }
-  catch (error) {
-    console.log(error)
-    res.status(500).send(error)
-  }
-}
+};
 //getting just one specific User by id
 const getOneUser = async (req, res) => {
   try {
     const id = req.params.id;
-    const result = await db.User.findOne({ where: { id } })
+    const result = await db.User.findOne({ where: { id } });
     if (result.length === 0) {
-      res.status(404).send({ "Message": `User with id ${id} not found !` })
-    } else res.status(200).send(result)
+      res.status(404).send({ Message: `User with id ${id} not found !` });
+    } else res.status(200).send(result);
+  } catch (error) {
+    console.error("Error fetching User:", error);
+    res.status(500).send({ error: "Internal Server Error" });
   }
-
-  catch (error) {
-    console.error('Error fetching User:', error);
-    res.status(500).send({ error: 'Internal Server Error' });
-  }
-}
+};
 
 //add a new user in database
+
 const addUser = async (req, res) => {
   try {
     const body = req.body;
-    const result = await db.User.create(body)
-    res.status(201).send({ User: result, message: 'User created successfully!' })
+    const result = await db.User.create(body);
+    res
+      .status(201)
+      .send({ User: result, message: "User created successfully!" });
+  } catch (error) {
+    res.status(500).send(error);
   }
-  catch (error) {
-    res.status(500).send(error)
-  }
-}
+};
 
 // delete a user from database by his id
 const deleteUser = async (req, res) => {
   try {
     const id = req.params.id;
-    const delUser = await db.User.destroy({ where: { id } })
-    res.status(200).send({ message: 'User deleted successfully!' })
-  }
-  catch (error) {
-    res.status(500).send(error)
+    const delUser = await db.User.destroy({ where: { id } });
+    res.status(200).send({ message: "User deleted successfully!" });
+  } catch (error) {
+    res.status(500).send(error);
   }
 };
 
@@ -59,14 +56,19 @@ const updateUser = async (req, res) => {
     const id = req.params.id;
     const upUser = await db.User.update(
       {
-        username: username, email: email, password: password, image: image
-      }, { where: { id } }
-    )
-    const updatedUser = await db.User.findOne({ where: { id } })
-    res.status(201).send({ User: updatedUser, message: 'User updated successfully!' })
-  }
-  catch (error) {
-    res.status(500).send(error)
+        username: username,
+        email: email,
+        password: password,
+        image: image,
+      },
+      { where: { id } }
+    );
+    const updatedUser = await db.User.findOne({ where: { id } });
+    res
+      .status(201)
+      .send({ User: updatedUser, message: "User updated successfully!" });
+  } catch (error) {
+    res.status(500).send(error);
   }
 };
 
@@ -126,4 +128,10 @@ const updateUser = async (req, res) => {
 // }
 //--------------------------------------------------------------------------------------------------------------------------
 
-module.exports = { getAllUsers, getOneUser, addUser, deleteUser, updateUser, /*addhouseToList, getHouseFromList, deletehouseFromList */ }
+module.exports = {
+  getAllUsers,
+  getOneUser,
+  addUser,
+  deleteUser,
+  updateUser /*addhouseToList, getHouseFromList, deletehouseFromList */,
+};
