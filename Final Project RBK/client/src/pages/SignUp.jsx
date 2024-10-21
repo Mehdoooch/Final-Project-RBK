@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-
-// import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -8,7 +6,7 @@ const SignUp = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [image, setImage] = useState(null); // For image file input
+  const [image, setImage] = useState(null);
   const [password, setPassword] = useState("");
 
   const handleImageChange = (e) => {
@@ -17,6 +15,19 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Log state values for debugging
+    console.log("Username:", username);
+    console.log("Email:", email);
+    console.log("Password:", password);
+    console.log("Image:", image);
+
+    // Validate input values
+    if (!username || !email || !password) {
+      alert("All fields are required!");
+      return;
+    }
+
     const formData = new FormData();
     formData.append("username", username);
     formData.append("email", email);
@@ -35,11 +46,18 @@ const SignUp = () => {
           },
         }
       );
+
       localStorage.setItem("token", response.data.token);
-      navigate("/");
+      navigate("/Login");
       console.log(response.data, "signup success");
     } catch (error) {
-      console.log(error, "signup error");
+      if (error.response) {
+        console.error("Server responded with an error:", error.response.data);
+      } else if (error.request) {
+        console.error("No response received:", error.request);
+      } else {
+        console.error("Error in setting up request:", error.message);
+      }
     }
   };
 

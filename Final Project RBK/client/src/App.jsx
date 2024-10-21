@@ -18,9 +18,9 @@ function App() {
       <BrowserRouter>
         {/* <Dashboard /> */}
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<SignUp />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Home" element={<Home />} />
           <Route path="/admin/home" element={<DetailsPage />} />
           <Route path="/admin/newhouse" element={<AddHouse />} />
           <Route path="/admin/houses" element={<Allhouses />} />
