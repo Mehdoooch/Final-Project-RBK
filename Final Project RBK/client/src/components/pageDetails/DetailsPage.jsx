@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import ReservationPopup from './ReservationPopup';
 import { MapPin, Phone, Calendar, Star, Users, Home, DollarSign } from 'lucide-react';
 import BasicFooter from './Footer'
 import ErrorHouse from './ErrorHouse'
@@ -11,6 +12,7 @@ export default function DetailsPage() {
 
     const dummyHouse = 'https://i.pinimg.com/enabled_hi/564x/2b/63/d4/2b63d4b56e89911b462dfc2b44e3d65f.jpg';
 
+    const [isReservationOpen, setIsReservationOpen] = useState(false);
     const [data, setData] = useState([]);
     const [index, setIndex] = useState(2)
 
@@ -30,14 +32,12 @@ export default function DetailsPage() {
 
 
 
-    if (data.length === 0 ) {
+    if (data.length === 0) {
         return <ErrorHouse />
     }
 
     const house = data[index];
     const houseImages = house.images
-    console.log(houseImages[0]?.url);
-    
 
     return (
         <div>
@@ -54,10 +54,17 @@ export default function DetailsPage() {
                         </div>
 
                         <div className="flex gap-4 mb-6">
-                            <button className="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-300 flex items-center justify-center text-lg font-semibold shadow-md hover:shadow-lg">
+                            <button
+                                onClick={() => setIsReservationOpen(true)}
+                                className="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-300 flex items-center justify-center text-lg font-semibold shadow-md hover:shadow-lg">
                                 <Calendar className="mr-2" size={24} />
                                 Reserve Now
                             </button>
+                            <ReservationPopup
+                                isOpen={isReservationOpen}
+                                onClose={() => setIsReservationOpen(false)}
+                                house={house}
+                            />
                             <button className="flex-1 bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 transition duration-300 flex items-center justify-center text-lg font-semibold shadow-md hover:shadow-lg">
                                 <Phone className="mr-2" size={24} />
                                 Contact Agent
@@ -103,11 +110,11 @@ export default function DetailsPage() {
                     </div>
                 </div>
 
-                
+
                 <div className="mt-12">
                     <h2 className="text-2xl font-semibold mb-4 text-gray-800">Location</h2>
                     <div className="bg-gray-200 h-96 rounded-lg shadow-md flex items-center justify-center hover:shadow-lg transition duration-300">
-                    <Map_page house={house}  img={houseImages[0]?.url} />
+                        <Map_page house={house} img={houseImages[0]?.url} />
                     </div>
                 </div>
             </div>
