@@ -1,14 +1,14 @@
 INSERT INTO Houses (title, description, price, region, localisation, surface, room) VALUES
-('Luxury Villa', 'A stunning luxury villa with modern amenities and beautiful views.', '500000', 'California', 'Los Angeles', '3500', '5'),
-('Modern Apartment', 'A spacious apartment in the heart of the city with great facilities.', '300000', 'New York', 'Manhattan', '1200', '3'),
-('Country Cottage', 'A cozy cottage located in the countryside with a beautiful garden.', '150000', 'Texas', 'Dallas', '2000', '4'),
-('Beach House', 'A beachfront property with breathtaking ocean views.', '450000', 'Florida', 'Miami', '2800', '4'),
-('Suburban House', 'A family-friendly house located in a peaceful suburban neighborhood.', '250000', 'Illinois', 'Chicago', '2300', '3'),
-('Mountain Cabin', 'A secluded cabin with gorgeous mountain views and hiking trails.', '350000', 'Colorado', 'Aspen', '3200', '4'),
-('Penthouse Suite', 'A luxurious penthouse located in the heart of the city.', '900000', 'Nevada', 'Las Vegas', '1800', '3'),
-('Lake House', 'A beautiful house situated near the lake, perfect for relaxation.', '400000', 'Minnesota', 'Minneapolis', '2700', '4'),
-('Urban Loft', 'A modern loft in a trendy urban area.', '320000', 'Washington', 'Seattle', '1600', '2'),
-('Historic Mansion', 'A grand mansion with a rich history and luxurious furnishings.', '1200000', 'Georgia', 'Atlanta', '5200', '6');
+('Luxury Villa', 'A stunning luxury villa with modern amenities and beautiful views.', '500000', 'California', '36.820169, 10.243216', '3500', '5'),
+('Modern Apartment', 'A spacious apartment in the heart of the city with great facilities.', '300000', 'New York', '36.759755, 10.151024', '1200', '3'),
+('Country Cottage', 'A cozy cottage located in the countryside with a beautiful garden.', '150000', 'Texas', '36.751951, 10.344319', '2000', '4'),
+('Beach House', 'A beachfront property with breathtaking ocean views.', '450000', 'Florida', '36.777742, 10.029821', '2800', '4'),
+('Suburban House', 'A family-friendly house located in a peaceful suburban neighborhood.', '250000', 'Illinois', '36.783377, 10.060125', '2300', '3'),
+('Mountain Cabin', 'A secluded cabin with gorgeous mountain views and hiking trails.', '350000', 'Colorado', '36.860614, 10.174481', '3200', '4'),
+('Penthouse Suite', 'A luxurious penthouse located in the heart of the city.', '900000', 'Nevada', '36.890091, 10.252299', '1800', '3'),
+('Lake House', 'A beautiful house situated near the lake, perfect for relaxation.', '400000', 'Minnesota', '36.829604, 10.308979', '2700', '4'),
+('Urban Loft', 'A modern loft in a trendy urban area.', '320000', 'Washington', '36.735654, 10.340415', '1600', '2'),
+('Historic Mansion', 'A grand mansion with a rich history and luxurious furnishings.', '1200000', 'Georgia', '36.785477, 10.128798', '5200', '6');
 
 INSERT INTO Users (username, email, password, image) VALUES
 ('john_doe', 'john@example.com', 'password123', 'https://i.pinimg.com/enabled_hi/236x/7a/a5/3f/7aa53fbd8ab8d9971d37ea21c266733f.jpg'),

@@ -5,14 +5,15 @@ import Allhouses from "./components/Admin/Allhouses";
 import Allreservations from "./components/Admin/Allreservations ";
 import Allusers from "./components/Admin/Allusers ";
 import Updatehouse from "./components/Admin/Updatehouse";
-import DetailsPage from "./components/DetailsPage";
-import Dashboard from "./components/Admin/Dashboard.jsx";
+import DetailsPage from "./components/pageDetails/DetailsPage";
+import Dashboard from "./components/Admin/Dashboard.jsx"
 import Contact from "./components/Contact.jsx"
 import Home from "./components/home/Home";
 import Login from "./pages/LogIn.jsx";
 import SignUp from "./pages/SignUp.jsx";
 
 import "./App.css";
+
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
           <Route path="/admin/reservations" element={<Allreservations />} />
           <Route path="/admin/users" element={<Allusers />} />
           <Route path="/admin/houses/update/:id" element={<Updatehouse />} />
-          <Route path='/detailsPage/:id' element={<DetailsPage />} />
+          <Route path='/detailsPage' element={<DetailsPage />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/contact' element={<Contact />} />
         </Routes>
