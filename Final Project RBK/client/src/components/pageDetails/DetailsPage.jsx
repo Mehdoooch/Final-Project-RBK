@@ -12,7 +12,6 @@ export default function DetailsPage() {
     const dummyHouse = 'https://i.pinimg.com/enabled_hi/564x/2b/63/d4/2b63d4b56e89911b462dfc2b44e3d65f.jpg';
 
     const [data, setData] = useState([]);
-    const [images, setImages] = useState([]);
     const [index, setIndex] = useState(2)
 
     useEffect(() => {
@@ -21,8 +20,7 @@ export default function DetailsPage() {
                 const res = await axios.get('http://localhost:8080/house/getAll');
                 setData(res.data);
 
-                const imgRes = await axios.get('http://localhost:8080/imgHouse/getAll');
-                setImages(imgRes.data);
+
             } catch (err) {
                 console.log('Error:', err);
             }
@@ -30,16 +28,16 @@ export default function DetailsPage() {
         fetchData();
     }, []);
 
-    const getHouseImages = (house) => {
-        return images.filter((img) => img.houseId === house);
-    };
+
 
     if (data.length === 0 ) {
         return <ErrorHouse />
     }
 
     const house = data[index];
-    const houseImages = getHouseImages(house.id);
+    const houseImages = house.images
+    console.log(houseImages[0]?.url);
+    
 
     return (
         <div>
@@ -109,7 +107,7 @@ export default function DetailsPage() {
                 <div className="mt-12">
                     <h2 className="text-2xl font-semibold mb-4 text-gray-800">Location</h2>
                     <div className="bg-gray-200 h-96 rounded-lg shadow-md flex items-center justify-center hover:shadow-lg transition duration-300">
-                    <Map_page house={house}  items={data} img={images} />
+                    <Map_page house={house}  img={houseImages[0]?.url} />
                     </div>
                 </div>
             </div>

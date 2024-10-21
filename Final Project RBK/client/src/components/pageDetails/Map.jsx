@@ -2,7 +2,7 @@ import { MapContainer, TileLayer } from 'react-leaflet'
 import "leaflet/dist/leaflet.css";
 import Pin from './Pin'
 
-function Map({ house,items, images }) {
+function Map({ house, img }) {
 
   const mapStyles = {
     width: '100%',
@@ -22,9 +22,7 @@ function Map({ house,items, images }) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {items.map(item => (
-        <Pin item={item} images={images} key={item.id} />
-      ))}
+        <Pin house={house} img={img}  />
     </MapContainer>
   );
 }

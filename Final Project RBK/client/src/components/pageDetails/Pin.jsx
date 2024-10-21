@@ -11,8 +11,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
 });
 
-function Pin({ item, images }) {
-  const [image, setImages] = useState(images || []);
+function Pin({ house, img }) {
 
   const custom_popup = {
     maxWidth: '200px',
@@ -28,33 +27,28 @@ function Pin({ item, images }) {
     borderRadius: '5px 5px 0 0',
   };
 
-  const getHouseImages = (house) => {
-    return Array.isArray(image) ? image.filter((img) => img.houseId === house) : [];
-  };
+  const [latitude, longitude] = house.localisation.split(',').map(Number);
 
-  const houseImage = getHouseImages(item.id);
 
   return (
-    <Marker position={[36.800711, 10.186228]}>
+    <Marker position={[latitude, longitude]}>
       <Popup>
         <div style={custom_popup}>
-          {houseImage.length > 0 && (
             <img
               style={imgStyles}
-              src={houseImage[0].url}
-              alt={item.title}
+              src={img}
+              alt={house.title}
             />
-          )}
           <div className="px-2 py-1">
-            <div className="font-bold text-sm mb-1">{item.title}</div>
-            <p className="text-gray-700 text-xs">{item.description}</p>
+            <div className="font-bold text-sm mb-1">{house.title}</div>
+            <p className="text-gray-700 text-xs">{house.description}</p>
           </div>
           <div className="px-4 py-1">
             <span className="inline-block bg-gray-200 rounded-full px-2 py-1 text-sm font-semibold text-gray-700 mr-1 mb-1">
-              ${item.price}/night
+              ${house.price}/night
             </span>
             <span className="inline-block bg-gray-200 rounded-full px-2 py-1 text-sm font-semibold text-gray-700 mr-1 mb-1">
-              {item.bedrooms} beds
+              {house.bedrooms} beds
             </span>
           </div>
         </div>
