@@ -18,16 +18,19 @@ function App() {
       <BrowserRouter>
         {/* <Dashboard /> */}
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/home" element={<Home />} />
+       
+
+          <Route path="/" element={<SignUp />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Home" element={<Home />} />
           <Route path="/admin/home" element={<DetailsPage />} />
           <Route path="/admin/newhouse" element={<AddHouse />} />
           <Route path="/admin/houses" element={<Allhouses />} />
           <Route path="/admin/reservations" element={<Allreservations />} />
           <Route path="/admin/users" element={<Allusers />} />
           <Route path="/admin/houses/update/:id" element={<Updatehouse />} />
-          <Route path="/" element={<DetailsPage />} />
+          <Route path="/detailsPage" element={<DetailsPage />} />
+
         </Routes>
       </BrowserRouter>
     </>
