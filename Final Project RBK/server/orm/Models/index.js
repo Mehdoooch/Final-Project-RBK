@@ -11,10 +11,11 @@ db.House = require('./houses.js')(connect, DataTypes)
 db.User = require('./users.js')(connect, DataTypes)
 db.Reservation = require('./reservations.js')(connect, DataTypes)
 db.ImgHouse = require('./imgHouses.js')(connect, DataTypes)
+
 // Setup associations
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
-      db[modelName].associate(db);
+    db[modelName].associate(db);
   }
 });
 
@@ -33,12 +34,4 @@ db.Reservation.belongsTo(db.User, { foreignKey: 'userId', as: 'Users' })
 db.House.hasMany(db.Reservation, { foreignKey: 'houseId', as: 'Reservations' });
 db.Reservation.belongsTo(db.House, { foreignKey: 'houseId', as: 'Houses' })
 
-/*//relation between table house && imgHouse
-db.House.hasMany(db.ImgHouse, { foreignKey: 'House_id', as: 'Images' });
-db.ImgHouse.belongsTo(db.House, { foreignKey: 'House_id', as: 'Houses' })
-
-//relation manyTomany between table user && house
-// db.User.belongsToMany(db.House, { through: 'favoris' }); // 'favoris' is the junction table
-//db.House.belongsToMany(db.User, { through: 'favoris' });
-*/
 module.exports = db
