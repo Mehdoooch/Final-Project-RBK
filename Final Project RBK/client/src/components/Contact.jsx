@@ -1,9 +1,7 @@
 import React from "react";
 import Swal from 'sweetalert2';
 import { useNavigate } from "react-router-dom";
-
-
-
+import SendIcon from '@mui/icons-material/Send';
 
 const Contact = () => {
     const navigate = useNavigate();
@@ -38,33 +36,32 @@ const Contact = () => {
         }
     };
 
-
-
     return (
-
         <div>
+            <section className='heroo'>
+                <div className='containerr'>
 
+                    <form onSubmit={onSubmit} className='flexx'>
+                        <div className='boxx'>
+                            <span className='label'>Full Name</span>
+                            <input type='text' placeholder='Enter your name...' required />
+                        </div>
+                        <div className='boxx'>
+                            <span className='label'>Email Address</span>
+                            <input type='text' placeholder='Enter your email...' required />
+                        </div>
+                        <div className='boxx'>
+                            <span className='label'>Your Message</span>
+                            <textarea type='text' cols="30" rows="5" placeholder='Enter your message...' required></textarea>
+                        </div>
 
-            <section className="contact">
-                <form onSubmit={onSubmit}>
-                    <h2>Contact Us</h2>
-                    <div className="input-box">
-                        <label>Full Name</label>
-                        <input type="text" className="field" placeholder="Enter your name" name="name" required />
-                    </div>
-                    <div className="input-box">
-                        <label>Email Address</label>
-                        <input type="email" className="field" placeholder="Enter your email" name="email" required />
-                    </div>
-                    <div className="input-box">
-                        <label>Your Message</label>
-                        <textarea name="message" className="field mess" placeholder="Enter your message" required></textarea>
-
-                    </div>
-                    <button type="submit">Send Message</button>
-                </form>
+                        <button className='btn2'>
+                            <SendIcon />
+                            Send
+                        </button>
+                    </form>
+                </div>
             </section>
-
         </div>
     )
 }

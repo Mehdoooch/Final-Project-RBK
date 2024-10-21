@@ -1,143 +1,189 @@
  .container-house {
-     max-width: 600px;
-     margin: 50px auto;
-     padding: 20px;
+   max-width: 600px;
+   margin: 50px auto;
+   padding: 20px;
  }
 
  .detailhouse {
-     text-align: center;
-     margin-bottom: 20px;
-     margin-top: 5px;
+   text-align: center;
+   margin-bottom: 20px;
+   margin-top: 5px;
  }
 
  .bodyForm {
-     display: flex;
-     flex-direction: column;
-     gap: 15px;
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
  }
 
  .button-container {
-     display: flex;
-     justify-content: flex-end;
+   display: flex;
+   justify-content: flex-end;
 
  }
 
  .label-house {
-     font-weight: bold;
+   font-weight: bold;
  }
 
  .input-prophouse {
-     padding: 8px;
-     border-radius: 4px;
-     border: 1px solid #ccc;
+   padding: 8px;
+   border-radius: 4px;
+   border: 1px solid #ccc;
  }
 
  .upload-button,
  .remove-image-button {
-     padding: 8px 12px;
-     background-color: #3f51b5;
-     color: #fff;
-     border: none;
-     border-radius: 4px;
-     cursor: pointer;
+   padding: 8px 12px;
+   background-color: #3f51b5;
+   color: #fff;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
  }
 
 
  .uploaded-images-container {
-     display: flex;
-     flex-wrap: wrap;
-     gap: 10px;
-     margin-top: 10px;
+   display: flex;
+   flex-wrap: wrap;
+   gap: 10px;
+   margin-top: 10px;
  }
 
  .uploaded-image-wrapper {
-     position: relative;
+   position: relative;
  }
 
  .image-house-uploaded {
-     width: 150px;
-     height: 150px;
-     object-fit: cover;
-     border: 1px solid #ccc;
-     border-radius: 4px;
+   width: 150px;
+   height: 150px;
+   object-fit: cover;
+   border: 1px solid #ccc;
+   border-radius: 4px;
  }
 
  h1 {
-     text-align: center;
+   text-align: center;
 
  }
 
  .All-Users {
-     color: #ec1212;
-     font-weight: bold;
-     font-size: xx-large;
+   color: #ec1212;
+   font-weight: bold;
+   font-size: xx-large;
  }
 
  .All-Houses {
-     color: #06ee3c;
-     font-weight: bold;
-     font-size: xx-large;
+   color: #06ee3c;
+   font-weight: bold;
+   font-size: xx-large;
  }
 
+/* --------------------Contact CSS-------------------------------- */
+ 
+ .heroo {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   min-height: 100vh;
+   background-image: url("/images/banner.png");
+   /* Replace with the actual image path */
+   background-size: cover;
+   /* Ensure the image covers the entire background */
+   background-position: center;
+   /* Center the background image */
+   background-repeat: no-repeat;
+   /* Avoid repetition */
+   position: relative;
+   /* Allow positioning of child elements */
+ }
 
- .contact {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    /* background: #826afb; */
-  }
-  .contact form {
-    max-width: 600px;
-    width: 100%;
-    background: #fff;
-    padding: 25px 25px 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-    color: #333;
-    margin: 25px;
-  }
+ /* Center the form */
+ .containerr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Full width */
+  height: 500px;
+ }
+
+ /* Style the form itself */
+ form.flexx {
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background for better readability */
+  padding: 40px; /* Add padding for better spacing */
+  border-radius: 10px; /* Rounded corners for form */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+  max-width: 600px; /* Limit the form width */
+  width: 100%; /* Responsive to screen size */
+  height: 500px;
+ }
+
+ /* Input box styles */
+ .boxx {
   
-  .contact form h2 {
-    font-size: 30px;
-    text-align: center;
-  }
-  .contact form .input-box {
-    margin-top: 20px;
-  }
-  .contact form .input-box .field {
-    width: 100%;
-    height: 50px;
-    background: transparent;
-    border: 2px solid #ddd;
-    outline: none;
-    border-radius: 6px;
-    padding: 15px;
-    font-size: 16px;
-    color: #333;
-    margin-top: 8px;
-  }
-  
-  .contact form .input-box .field .mess{
-    height: 200px;
-    resize: none;
-  }
-  
-  .contact form button{
-    width: 100%;
-    height: 55px;
-    background:#27ae60;
-    border: none;
-    border-radius: 6px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-    cursor: pointer;
-    font-size: 16px;
-    color: #fff;
-    font-weight: 500;
-    margin-top: 25px;
-    transition: .5s;
-  }
-  
-  .contact form button:hover {
-    background: #06ee3c;
-  }
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+ }
+
+.label{
+  font-weight: bold;
+  color: #4CAF50;
+}
+ .boxx input,
+ .boxx textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+ }
+
+ .boxx input:focus,
+ .boxx textarea:focus {
+   border-color: #7da6ff;
+   /* Highlight border on focus */
+ }
+
+ /* Button styles */
+ .btn2 {
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  width: 100px;
+  height:30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+
+ .btn2:hover {
+   background-color: #45a049;
+   /* Darker green on hover */
+ }
+
+ .btn2 i {
+   margin-right: 10px;
+   /* Space between icon and text */
+ }
+ /* --------------------SlideBar CSS-------------------------------- */
+
+ .hoverEffect {
+  transition: all 0.3s ease-in-out;
+}
+
+.hoverEffect:hover {
+  background-color: lightgray;
+  color: #27ae60;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.hoverEffect:hover .MuiListItemIcon-root {
+  color: #27ae60;
+}
