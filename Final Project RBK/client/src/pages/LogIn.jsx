@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+
+// import React, { useState } from "react";
+
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -11,17 +13,20 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+
     try {
       const response = await axios.post("http://localhost:8080/users/logIn", {
         email,
         password,
       });
       await localStorage.setItem("token", response.data.token);
+  
       navigate("/Home");
       console.log("Login successful");
     } catch (error) {
       console.log("Login error:", error);
       setError("Invalid email or password");
+
     }
   };
 
@@ -109,5 +114,6 @@ const styles = {
     transition: "background-color 0.3s",
   },
 };
+
 
 export default Login;

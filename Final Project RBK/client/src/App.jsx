@@ -5,7 +5,7 @@ import Allhouses from "./components/Admin/Allhouses";
 import Allreservations from "./components/Admin/Allreservations ";
 import Allusers from "./components/Admin/Allusers ";
 import Updatehouse from "./components/Admin/Updatehouse";
-import DetailsPage from "./components/DetailsPage";
+import DetailsPage from "./components/pageDetails/DetailsPage";
 import Home from "./components/home/Home";
 import Login from "./pages/LogIn.jsx";
 import SignUp from "./pages/SignUp.jsx";
@@ -18,6 +18,8 @@ function App() {
       <BrowserRouter>
         {/* <Dashboard /> */}
         <Routes>
+       
+
           <Route path="/" element={<SignUp />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Home" element={<Home />} />
@@ -28,6 +30,7 @@ function App() {
           <Route path="/admin/users" element={<Allusers />} />
           <Route path="/admin/houses/update/:id" element={<Updatehouse />} />
           <Route path="/detailsPage" element={<DetailsPage />} />
+
         </Routes>
       </BrowserRouter>
     </>
