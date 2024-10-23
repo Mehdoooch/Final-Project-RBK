@@ -23,6 +23,15 @@ module.exports = (connect, DataTypes) => {
         //     type: DataTypes.STRING,
         //     allowNull: false
         // },
+        userId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'users',
+                key: 'id',
+            },
+            onDelete: 'CASCADE',
+        },
 
     },
         {

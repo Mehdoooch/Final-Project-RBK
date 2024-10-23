@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+
+// import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -28,6 +29,7 @@ const SignUp = () => {
       return;
     }
 
+
     const formData = new FormData();
     formData.append("username", username);
     formData.append("email", email);
@@ -37,6 +39,7 @@ const SignUp = () => {
     }
 
     try {
+
       const response = await axios.post("http://localhost:8080/users/signUp", {
         username,
         email,
@@ -54,6 +57,7 @@ const SignUp = () => {
       } else {
         console.error("Error in setting up request:", error.message);
       }
+
     }
   };
 

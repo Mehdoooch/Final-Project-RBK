@@ -1,5 +1,6 @@
 import React from 'react';
 import Dashboard from "./Dashboard.jsx"
+import "./Admin.css"
 
 function Homeadmin(props) {
     return (

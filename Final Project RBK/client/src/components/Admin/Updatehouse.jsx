@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import axios from 'axios';
 import "./Admin.css"
-import ShowImage from './ShowImage';
 import CloudinaryUpload from './CloudinaryUpload';
 
 // import from material UI
@@ -53,8 +52,9 @@ function Updatehouse() {
             <h1 className="detailhouse">Update house</h1>
             <form onSubmit={handleSubmit} className="bodyForm">
 
-                <label htmlFor="title">Title</label>
+                <label className="label-house" htmlFor="title">Title</label>
                 <input
+                    className="input-prophouse"
                     type="text"
                     name="title"
                     value={uptitle}
