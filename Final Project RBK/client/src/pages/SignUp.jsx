@@ -39,17 +39,13 @@ const SignUp = () => {
     }
 
     try {
-      const response = await axios.post(
-        "http://localhost:8080/users/signUp",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
 
-
+      const response = await axios.post("http://localhost:8080/users/signUp", {
+        username,
+        email,
+        password,
+      });
+      console.log(image);
       localStorage.setItem("token", response.data.token);
       navigate("/Login");
       console.log(response.data, "signup success");
@@ -95,7 +91,7 @@ const SignUp = () => {
             style={styles.input}
           />
         </div>
-        <div style={styles.inputGroup}>
+        {/* <div style={styles.inputGroup}>
           <label htmlFor="image" style={styles.label}>
             Profile Image
           </label>
@@ -106,7 +102,7 @@ const SignUp = () => {
             accept="image/*"
             style={styles.input}
           />
-        </div>
+        </div> */}
         <div style={styles.inputGroup}>
           <label htmlFor="password" style={styles.label}>
             Password
