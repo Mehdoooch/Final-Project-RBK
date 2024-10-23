@@ -3,11 +3,11 @@ const { Op } = require('sequelize'); //calling the Sequelize Operators
 
 //function for adding a new Reservation in database
 const addReservation = async (req, res) => {
-    const { startDate, endDate, user_id, House_id } = req.body;
+    const { startDate, endDate, userId, houseId } = req.body;
 
 
-    if (!startDate || !endDate || !user_id || !House_id) {
-        console.log(startDate, endDate, user_id, House_id);
+    if (!startDate || !endDate || !userId || !houseId) {
+        console.log(startDate, endDate, userId, houseId);
 
         return res.status(400).json({ message: 'All fields are required.' });
     }
@@ -18,13 +18,13 @@ const addReservation = async (req, res) => {
 
     try {
         // check if the user exist
-        const user = await db.User.findByPk(user_id);
+        const user = await db.User.findByPk(userId);
         if (!user) {
             return res.status(404).json({ message: 'User not found.' });
         }
 
         // check if house exist
-        const house = await db.House.findByPk(House_id);
+        const house = await db.House.findByPk(houseId);
         if (!house) {
             return res.status(404).json({ message: 'House not found.' });
         }
@@ -32,7 +32,7 @@ const addReservation = async (req, res) => {
         // check the disponibility of the house
         const existingReservation = await db.Reservation.findOne({
             where: {
-                House_id: House_id,
+                houseId: houseId,
                 [Op.or]: [
                     {
                         startDate: {
@@ -62,7 +62,7 @@ const addReservation = async (req, res) => {
         }
 
         // add reservation
-        const newReservation = await db.Reservation.create({ startDate, endDate, user_id, House_id });
+        const newReservation = await db.Reservation.create({ startDate, endDate, userId, houseId });
 
         return res.status(201).json({
             message: 'Reservation created successfully.',
@@ -79,7 +79,7 @@ const addReservation = async (req, res) => {
 // function for deleting reservation *******/ NE FONCTIONNE PAS :( /*******
 // const deleteReservation = async (req, res) => {
 //     const reservationId = req.params.id;
-//     const user_id = req.user.id; // from the middleware of authentification 
+//     const userId = req.user.id; // from the middleware of authentification 
 
 //     try {
 //         // Find reservation

@@ -20,7 +20,7 @@ function App() {
         <Routes>
        
 
-          <Route path="/" element={<SignUp />} />
+          <Route path="/home" element={<SignUp />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Home" element={<Home />} />
           <Route path="/admin/home" element={<DetailsPage />} />
@@ -29,7 +29,7 @@ function App() {
           <Route path="/admin/reservations" element={<Allreservations />} />
           <Route path="/admin/users" element={<Allusers />} />
           <Route path="/admin/houses/update/:id" element={<Updatehouse />} />
-          <Route path="/detailsPage" element={<DetailsPage />} />
+          <Route path="/" element={<DetailsPage />} />
 
         </Routes>
       </BrowserRouter>

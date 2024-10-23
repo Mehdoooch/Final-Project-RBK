@@ -14,7 +14,7 @@ function Map({ house, img }) {
   return (
     <MapContainer
       center={[latitude, longitude]}
-      zoom={7}
+      zoom={13}
       scrollWheelZoom={false}
       style={mapStyles}
     >
