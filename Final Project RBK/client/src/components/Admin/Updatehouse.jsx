@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation, useParams } from 'react-router-dom';
+import { useNavigate, useLocation, useParams, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import "./Admin.css"
 import CloudinaryUpload from './CloudinaryUpload';
@@ -9,12 +9,23 @@ import { Box } from '@mui/material';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import BrowserUpdatedIcon from '@mui/icons-material/BrowserUpdated';
 import Button from '@mui/material/Button';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+// import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
+
+
 
 function Updatehouse() {
     const navigate = useNavigate();
     const location = useLocation();
+    
     const { editrow } = location.state || {};
     const { id } = useParams();
+
+    if (!editrow) {
+        return <div>Loading...</div>;
+    }
+
     const [uptitle, setTitleup] = useState(editrow.title);
     const [updescription, setDescriptionup] = useState(editrow.description);
     const [upprice, setPriceup] = useState(editrow.price);
@@ -22,11 +33,12 @@ function Updatehouse() {
     const [uplocalisation, setLocalisationup] = useState(editrow.localisation);
     const [upsurface, setSurfaceup] = useState(editrow.surface);
     const [uproom, setRoomup] = useState(editrow.room);
-    const [upimages, setImagesup] = useState(editrow.images);
+    const oldUrls = editrow?.images?.map(image => image.url) || [];
+    const [upimages, setImagesup] = useState(oldUrls);
     const [loading, setLoading] = useState(false);
+    const [addImageMode,setAddImageMode]=useState(false);
 
-
-    // function for updating a row of house   
+    // function for updating a row of house
     function handleSubmit(event) {
         event.preventDefault();
         axios.put(`http://localhost:8080/house/update/${id}`, {
@@ -37,15 +49,23 @@ function Updatehouse() {
             localisation: uplocalisation,
             surface: upsurface,
             room: uproom,
-
+            images: upimages,
         })
             .then(res => {
                 console.log(res.data);
                 navigate('/admin/houses');
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log(err));
     }
 
+    const handleRemoveImage = (index) => {
+        setImagesup((prevURLs) => prevURLs.filter((_, i) => i !== index));
+    };
+   
+    
+    const handleAddImages = () => {
+        setAddImageMode(true)
+    }
 
     return (
         <div className='container-house'>
@@ -58,7 +78,6 @@ function Updatehouse() {
                     type="text"
                     name="title"
                     value={uptitle}
-                    defaultValue={editrow.title}
                     onChange={(e) => setTitleup(e.target.value)}
                 />
 
@@ -66,7 +85,6 @@ function Updatehouse() {
                 <input
                     className="input-prophouse"
                     type="text"
-                    defaultValue={editrow.room}
                     name="room"
                     value={uproom}
                     onChange={(e) => setRoomup(e.target.value)}
@@ -78,7 +96,6 @@ function Updatehouse() {
                     className="input-prophouse"
                     type="text"
                     name="Region"
-                    defaultValue={editrow.region}
                     value={upregion}
                     onChange={(e) => setRegionup(e.target.value)}
                     required
@@ -88,7 +105,6 @@ function Updatehouse() {
                 <input
                     className="input-prophouse"
                     type="text"
-                    defaultValue={editrow.surface}
                     name="surface"
                     value={upsurface}
                     onChange={(e) => setSurfaceup(e.target.value)}
@@ -99,17 +115,16 @@ function Updatehouse() {
                 <input
                     className="input-prophouse"
                     type="text"
-                    defaultValue={editrow.price}
                     name="Price"
                     value={upprice}
                     onChange={(e) => setPriceup(e.target.value)}
                     required
                 />
+
                 <label className="label-house" htmlFor="localisation">Localisation</label>
                 <input
                     className="input-prophouse"
                     type="text"
-                    defaultValue={editrow.localisation}
                     name="localisation"
                     value={uplocalisation}
                     onChange={(e) => setLocalisationup(e.target.value)}
@@ -120,34 +135,49 @@ function Updatehouse() {
                 <textarea
                     name="description"
                     className="input-prophouse"
-                    id="desc"
                     cols="30"
                     rows="10"
-                    defaultValue={editrow.description}
                     value={updescription}
                     onChange={(e) => setDescriptionup(e.target.value)}
                     required
                 ></textarea>
-                <CloudinaryUpload imageURLs={upimages} setImageURLs={setImagesup} loading={loading} setLoading={setLoading} />
 
-                {/* <Box sx={{ display: 'flex', gap: '5px' }}>
-                    {editrow.images.map((img) => (
-                        <img
-                            key={img.url}
-                            src={img.url}
-                            alt={`Image of ${editrow.title}`}
-                            style={{ width: '100px', height: '100px', objectFit: 'cover', cursor: 'pointer' }}
+                <Box sx={{ display: 'flex', gap: '5px' }}>
+                    {upimages.map((img, index) => (
+                        <div key={index} className="uploaded-image-wrapper">
+                            <img
+                                src={img}
+                                alt={`Uploaded ${index + 1}`}
+                                className="image-house-uploaded"
+                            />
+                            <FontAwesomeIcon
+                                icon={faTrashAlt}
+                                style={{ color: "#df2020" }}
+                                onClick={() => handleRemoveImage(index)}
+                                className="remove-image-icon"
+                            />
 
-                        />
+
+                        </div>
                     ))}
-                </Box> */}
+                    <div className="uploaded-image-wrapper">
+                        <img
+                            src={"/add.png"}
+                            alt="Add Image"
+                            style={{ width: "35px",height:"50px" }}
+                            onClick={() => handleAddImages()}
+                        />
+                       
+                    </div>
+                </Box>
 
+               {addImageMode && <CloudinaryUpload imageURLs={upimages} setImageURLs={setImagesup} loading={loading} setLoading={setLoading} />
+}
                 <div className="button-container">
                     <Button variant="contained" type="submit" style={{ width: '200px', marginLeft: '0' }} endIcon={<BrowserUpdatedIcon />}>Update</Button>
 
                     <Button variant="contained" color="error" endIcon={<CancelOutlinedIcon />} onClick={() => navigate("/admin/houses")}>Cancel</Button>
                 </div>
-
             </form>
         </div>
     );

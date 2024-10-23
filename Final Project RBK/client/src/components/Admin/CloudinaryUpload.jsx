@@ -87,6 +87,11 @@ function CloudinaryUpload({ imageURLs, setImageURLs, loading, setLoading }) {
   const handleRemoveImage = (index) => {
     setImageURLs((prevURLs) => prevURLs.filter((_, i) => i !== index));
   };
+console.log("imageurl:",imageURLs);
+
+
+
+
 
   return (
     <div>
