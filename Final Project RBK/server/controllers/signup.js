@@ -12,6 +12,7 @@ const signUp = async (req, res) => {
     const isPasswordValid = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[^_\s]{6,}$/.test(
       password
     );
+
     const existingUser = await db.User.findOne({ where: { email } });
 
     if (existingUser) {

@@ -13,8 +13,9 @@ const cors = require("cors");
 const PORT = 8080;
 const app = express();
 const db = require("./orm/Models/index.js");
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
+
 app.use("/user", usersRoutes);
 app.use("/house", housesRoutes);
 app.use("/imgHouse", imgHousesRoutes);
