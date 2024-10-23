@@ -5,9 +5,9 @@
  }
 
  .detailhouse {
-   text-align: center;
-   margin-bottom: 20px;
-   margin-top: 5px;
+  color: #06ee3c;
+  font-weight: bold;
+  font-size: xx-large;
  }
 
  .bodyForm {
@@ -31,6 +31,10 @@
    border-radius: 4px;
    border: 1px solid #ccc;
  }
+ .input-prophouse::placeholder {
+  font-size: 17px;
+  color: grey;
+}
 
  .upload-button,
  .remove-image-button {
@@ -52,6 +56,7 @@
 
  .uploaded-image-wrapper {
    position: relative;
+   
  }
 
  .image-house-uploaded {

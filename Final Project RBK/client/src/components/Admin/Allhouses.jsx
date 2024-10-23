@@ -138,12 +138,12 @@ function Allhouses() {
                         initialState={{
                             pagination: {
                                 paginationModel: {
-                                    pageSize: 10,
+                                    pageSize: 30,
                                 },
                             },
                         }}
                         pageSizeOptions={[10]}
-                        RowSelectionOnClick
+                        // RowSelectionOnClick
                         sx={{
                             '& .MuiDataGrid-columnHeaders': {
                               backgroundColor: '#1976d2',  

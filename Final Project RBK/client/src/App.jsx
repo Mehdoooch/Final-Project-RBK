@@ -1,12 +1,14 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Dashboard from "./components/Admin/Dashboard.jsx"
 import AddHouse from "./components/Admin/AddHouse";
 import Allhouses from "./components/Admin/Allhouses";
 import Allreservations from "./components/Admin/Allreservations ";
 import Allusers from "./components/Admin/Allusers ";
 import Updatehouse from "./components/Admin/Updatehouse";
+import CloudinaryUpload from "./components/Admin/CloudinaryUpload.jsx";
 import DetailsPage from "./components/pageDetails/DetailsPage";
-import Dashboard from "./components/Admin/Dashboard.jsx"
+
 import Contact from "./components/Contact.jsx"
 import Home from "./components/home/Home";
 import Login from "./pages/LogIn.jsx";
@@ -33,7 +35,7 @@ function App() {
           <Route path="/admin/houses/update/:id" element={<Updatehouse />} />
           <Route path='/detailsPage' element={<DetailsPage />} />
           <Route path='/contact' element={<Contact />} />
-          <Route path='/contact' element={<Contact />} />
+          <Route path="/upload-images" element={<CloudinaryUpload />} />
         </Routes>
       </BrowserRouter>
     </>
